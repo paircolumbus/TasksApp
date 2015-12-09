@@ -1,0 +1,27 @@
+<h1>My Tasks</h1>
+
+<div id="task-list" style="width: 300px; border-bottom: 1px solid black">
+  <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <p>[<%= task.complete ? "x" : " " %>] <%= task.name %></p>
+      </li>
+      <button>Mark Complete</button>
+      <button>Delete</button>
+    <% end %>
+  </ul>
+</div>
+<div>
+  <h1>Create a new task</h1>
+  <%= form_for @task do |f| %>
+    <p>
+      <%= f.label "Describe your task" %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label "Completed?" %>
+      <%= f.check_box :complete %>
+    </p>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>
