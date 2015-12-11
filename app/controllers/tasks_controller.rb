@@ -5,14 +5,26 @@ class TasksController < ApplicationController
   end
 
   def create
-    render 'index'
+    @task = Task.new(task_params)
+    @task.save
+    redirect_to root_url
   end
 
   def update
-    render 'index'
+    @task = Task.find(params[:id])
+    @task.complete = true
+    @task.save
+    redirect_to root_url
   end
 
   def destroy
-    @task = params[:task]  
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to root_url 
   end
+
+  private
+    def task_params
+      params.require(:task).permit(:name, :complete)  
+    end
 end

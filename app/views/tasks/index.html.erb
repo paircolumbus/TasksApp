@@ -5,9 +5,13 @@
     <% @tasks.each do |task| %>
       <li>
         <p>[<%= task.complete ? "x" : " " %>] <%= task.name %></p>
+        <%= form_tag params: {id: task.id}, method: :patch do %>
+          <%= submit_tag("Mark Complete") %>
+        <% end %>
+        <button>
+          <%= link_to "delete", "/tasks/#{task.id}", method: :delete %>
+        </button>
       </li>
-      <button>Mark Complete</button>
-      <button>Delete</button>
     <% end %>
   </ul>
 </div>
