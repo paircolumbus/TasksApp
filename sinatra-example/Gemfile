@@ -1,0 +1,9 @@
+# A sample Gemfile
+source "https://rubygems.org"
+
+gem "sinatra-activerecord"
+gem "shotgun"
+gem "sqlite3"
+gem "pry"
+gem "haml"
+gem "rake"

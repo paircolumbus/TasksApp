@@ -1,0 +1,43 @@
+!!!5
+%html
+  %head
+    %title My Personal Site
+    :css
+      li {
+        margin-top: 5px;
+      }
+  %body
+    %h1 My Tasks
+    %ul
+      - @tasks.each do |t|
+        - if t.completed
+          %li
+            %a{href: "/tasks/#{t.id}"}
+              [x] #{t.title}
+            %form{method: 'post', action: "/tasks/#{t.id}"}
+              %input{type:'hidden', name: '_method', value: 'delete'}
+              %input{type:'submit', value: 'Delete'}
+
+        - else
+          %li
+            %a{href: "/tasks/#{t.id}"}
+              [_] #{t.title}
+            %form{method: 'post', action: "/tasks/#{t.id}"}
+              %input{type:'hidden', name: '_method', value: 'put'}
+              %input{type:'hidden', name: 'completed', value: 'true'}
+              %input{type:'submit', value: 'Mark Complete'}
+            %form{method: 'post', action: "/tasks/#{t.id}"}
+              %input{type:'hidden', name: '_method', value: 'delete'}
+              %input{type:'submit', value: 'Delete'}
+    %hr
+    %h2 Create a new task
+    %form{method: 'post', action: '/tasks'}
+      %label{for: 'title'}
+        Task description
+      %input{type: 'text', name: 'title'}
+      %br
+      %label{for: 'completed'}
+        Completed?
+      %input{type: 'checkbox', name: 'completed', value: 'true'}
+      %br
+      %input{type: 'submit', value: 'submit'}
