@@ -33,16 +33,16 @@ app.use(session({
   store: new MongoStore(MSoptions)
 }));
 
-//set up passport
-passport.use(new Strategy(
-  function(username, password, cb) {
-    Mongo.User.find({username: username}, function(err, user) {
-      if (err) { return cb(err); }
-      if (!user) { return cb(null, false); }
-      if (user.password != password) { return cb(null, false); }
-      return cb(null, user);
-    });
-  }));
+// //set up passport
+// passport.use(new Strategy(
+//   function(username, password, cb) {
+//     Mongo.User.find({username: username}, function(err, user) {
+//       if (err) { return cb(err); }
+//       if (!user) { return cb(null, false); }
+//       if (user.password != password) { return cb(null, false); }
+//       return cb(null, user);
+//     });
+//   }));
 
 
 // Configure Passport authenticated session persistence.
@@ -67,6 +67,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+
+var mirage = require('./mirage');
+
+function reqAccess(req){
+  console.log(req.body);
+}
+
+function mWare(){}
+
+mirage(app, Mongo.Task, '/tasks', reqAccess, mWare);
+
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -78,37 +89,28 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err,
-            title: 'error'
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {},
-        title: 'error'
-    });
-});
-
-var mirage = require('./mirage');
-
-function reqAccess(req){
-  console.log(req.body);
-}
-
-function mWare(){}
-
-mirage(app, Mongo.Tasks, '/tasks', reqAccess, mWare);
+//
+// if (app.get('env') === 'development') {
+//     app.use(function(err, req, res, next) {
+//         res.status(err.status || 500);
+//         res.render('error', {
+//             message: err.message,
+//             error: err,
+//             title: 'error'
+//         });
+//     });
+// }
+//
+// // production error handler
+// // no stacktraces leaked to user
+// app.use(function(err, req, res, next) {
+//     res.status(err.status || 500);
+//     res.render('error', {
+//         message: err.message,
+//         error: {},
+//         title: 'error'
+//     });
+// });
+//
 
 module.exports = app;

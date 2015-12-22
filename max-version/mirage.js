@@ -67,5 +67,8 @@ module.exports = function(app, mongo_model, query, reqAccess, middleware){
         });
     });
 
+    console.log(app);
+    console.log(router);
+
     app.use(query, router);
 };
