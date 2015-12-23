@@ -23,8 +23,8 @@ module.exports = function(Backbone){
     template: '#item',
 
     onBeforeRender: function () {
-      console.log('hi');
-      console.log(this.model);
+      // console.log('hi');
+      // console.log(this.model);
     },
 
     events: {
@@ -32,12 +32,12 @@ module.exports = function(Backbone){
 
         this.model.set('text', e.target.value);
         this.model.save();
-        console.log(this.model);
+        //console.log(this.model);
       },
       'change #box': function(e){
         this.model.set('isDone', e.target.checked);
         this.model.save();
-        console.log(e.target.checked);
+        //console.log(e.target.checked);
       }
     }
   });
@@ -53,24 +53,24 @@ module.exports = function(Backbone){
       'keyup #text': function(e){
 
         this.model.set('text', e.target.value);
-        console.log(this.model);
       },
       'click #button': function(e){
 
         this.model.set('isDone', false);
-
-
         this.model.save();
 
         TaskApp.tasks.add(this.model);
 
-        console.log(e.target.checked);
-
-
-
+        //cleanup form
         this.$el[0].children[0].value = '';
-
         this.model = new TaskApp.TaskModel();
+      },
+      'click #delete': function(e){
+        TaskApp.tasks.each(function(item){
+          if (item.get('isDone') === true){
+            item.destroy();
+          }
+        });
       }
     }
   });
