@@ -3,7 +3,7 @@ module.exports = function(Backbone){
 
   var Task = Backbone.Model.extend({
     idAttribute: '_id',
-    url: '/tasks'
+    urlRoot: '/tasks'
   });
 
   var Tasks = Backbone.Collection.extend({
