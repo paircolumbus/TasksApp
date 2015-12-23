@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Basic page</title>
+  </head>
+  <body>
+    <div id="list">
+    </div>
+
+    <div id="form">
+    </div>
+
+    <script charset="utf-8" type="text/template" id="item">
+      <input type="text" value="<%= text %>">
+      <input id="box" type="checkbox" value="isDone?" <% if(isDone === true){ print('checked')}%> >
+    </script>
+
+    <script charset="utf-8" type="text/template" id="form-item">
+      <input type="text" id="text">
+      <button id="button">Submit</button>
+    </script>
+
+    <script src="out.js" charset="utf-8"></script>
+  </body>
+</html>
