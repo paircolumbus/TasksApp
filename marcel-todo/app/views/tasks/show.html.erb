@@ -1,0 +1,12 @@
+<%= @task.description %> <br><br>
+
+<b>Completed:</b> 
+	<% if @task.completed %>
+		<%= "Yes" %>
+	<% else %>
+		<%= "No" %>
+	<% end %>
+
+<br><br>
+
+<%= link_to "Back", :back %>

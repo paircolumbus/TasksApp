@@ -1,0 +1,11 @@
+<h1>Task List</h1>
+
+<% @tasks.each do |task| %>
+	<%= task.completed ? "[X]": "[ ]" %> <%= link_to "#{task.description}", task_path(task) %> 
+
+	<%= button_to "Mark Complete", task_path(task, "task" => {completed: true}), method: :patch if !task.completed  %>
+
+	<%= button_to "Delete Task", task_path(task), method: :delete %> <br> <br>
+<% end %>
+
+<%= button_to "New Task", new_task_path, method: :get %>
