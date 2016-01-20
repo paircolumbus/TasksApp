@@ -2,12 +2,10 @@
   <strong>Title:</strong>
   <%= @task.title %>
 </p>
- 
 <p>
   <strong>Completed:</strong>
   <%= @task.completed %>
 </p>
-
 <p>
   <% if @task.completed? %>
   <%= button_to 'Delete', task_path, :method => :delete %>
@@ -16,5 +14,4 @@
   <%= button_to 'Delete', task_path, :method => :delete %>
   <% end %>
 </p>
-
 <%= link_to 'Back', tasks_path %>
