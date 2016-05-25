@@ -1,0 +1,8 @@
+.row
+  .col-md-6.col-md-offset-3.details-div
+    %h2= @task.title
+    %h4= @task.description
+    %h5 Created at: #{@task.created_at}
+
+    = link_to "Edit task #{@task.id}", @task, href: "/tasks/#{@task.id}/edit", class: 'btn btn-success'
+    = link_to "Delete task #{@task.id}", @task, method: :delete, class: 'btn btn-danger'
