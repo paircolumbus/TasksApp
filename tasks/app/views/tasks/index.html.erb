@@ -2,28 +2,16 @@
 
 <h1>My Tasks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Completed</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.description %></td>
-        <td><%= task.completed ? 'Completed' : link_to('Click to complete', task_path(task, task: {completed: true}), method: :put) %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul>
+  <% @tasks.each do |task| %>
+      <li><%= link_to task.description_with_box, edit_task_path(task) %> </li>
+      <%= button_to('Click to complete', task_path(task, task: {completed: true}), method: :put) if !(task.completed) %>
+      <%= button_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</ul>
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<h1>Create a new task</h1>
+
+<%= render 'form' %>
