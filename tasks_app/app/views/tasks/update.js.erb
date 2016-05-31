@@ -1,2 +1,2 @@
 $('form').hide();
-$('form#edit_<%= dom_id(@task) %>').replaceWith('<%= j render partial: "task", locals: {task: @task} %>');
+$('tr#<%= dom_id(@task) %>').replaceWith('<%= j render partial: "task", locals: {task: @task} %>');
