@@ -1,3 +1,5 @@
-$('div#<%= dom_id(@task) %>').fadeOut();
-$('.complete-tasks').append('<%= j render partial: "task", locals: {task: @task} %>');
-$('div#<%= dom_id(@task) %>').find('h3').css('text-decoration', 'line-through');
+// $('div#<%= dom_id(@task) %>').fadeOut();
+// $('.complete-tasks').append('<%= j render partial: "task", locals: {task: @task} %>');
+// $('div#<%= dom_id(@task) %>').find('h3').css('text-decoration', 'line-through');
+
+$('tr#<%= dom_id(@task) %>').replaceWith('<%= j render partial: "task", locals: {task: @task} %>');

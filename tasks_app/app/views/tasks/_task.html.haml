@@ -1,7 +1,10 @@
 = content_tag_for(:tr, task) do
   %td= task.description
-  %td= task.completed
+  %td
+    - if task.completed
+      = link_to "<i class='fa fa-check-square' aria-hidden='true'></i>".html_safe, complete_path(task), remote: true
+    - else
+      = link_to "<i class='fa fa-square-o' aria-hidden='true'></i>".html_safe, complete_path(task), remote: true
   %td= task.created_at.strftime("%m/%d/%Y %-l:%M%P")
   %td= link_to "Edit", edit_task_path(task), remote: true
-  %td= link_to "Done", complete_path(task), remote: true
   %td= link_to "Delete", task, remote: true, method: :delete

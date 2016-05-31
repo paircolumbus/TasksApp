@@ -1,17 +1,11 @@
 %h1{:style => "text-align: center; margin-bottom: 10px;"} Tasks
 %table.table.table-striped.table-bordered.tasks-index
   %th Description
-  %th Completed?
+  %th Completed
   %th Created At
   %th Edit
-  %th Done
   %th Delete
   - @tasks.each do |task|
     = render task
-
-.complete-tasks
-  -# - @tasks.complete.each do |task|
-  -#   %h3= task.name
-
 
 = link_to "New", new_task_path, remote: true, class: "btn btn-secondary new-task-button"
