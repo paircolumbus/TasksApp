@@ -1,14 +1,13 @@
-.tasks-index
-  %h1{:style => "text-align: center; margin-bottom: 10px;"} Tasks
-  %table.table.table-striped.table-bordered
-    %th Description
-    %th Completed?
-    %th Created At
-    %th Edit
-    %th Done
-    %th Delete
-    - @tasks.each do |task|
-      = render task
+%h1{:style => "text-align: center; margin-bottom: 10px;"} Tasks
+%table.table.table-striped.table-bordered.tasks-index
+  %th Description
+  %th Completed?
+  %th Created At
+  %th Edit
+  %th Done
+  %th Delete
+  - @tasks.each do |task|
+    = render task
 
 .complete-tasks
   -# - @tasks.complete.each do |task|
