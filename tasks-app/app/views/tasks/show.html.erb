@@ -1,0 +1,10 @@
+<div class="centered-box centered-text">
+	<h1>Task: <%=@task.name%></h1>
+	<%=link_to 'Tasks',root_path%>
+</div>
+<table class="table centered-box">
+	<tbody>
+		<tr><td>Note</td><td><%=@task.note%></td></tr>
+		<tr><td>Completed</td><td><%=@task.completed%></td></tr>
+	</tbody>
+</table>

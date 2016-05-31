@@ -1,0 +1,32 @@
+<div class="centered-box centered-text">
+<%= form_for @task, url: task_path(id: @task.id) do |f| %>
+	<% if @task.errors.any?%>
+		<div id="error_div">
+			<h2>
+			<%= pluralize(@task.errors.count,"error")%>
+			prevented this article from being saved:
+			</h2>
+			<ul>
+				<%= @task.errors.full_message.each do |message| %>
+				<li><%= message%></li>
+				<%end%>
+			</ul>
+		</div>
+	<%end%>
+	<p>
+		<%= f.label :name%>
+		<%= f.text_field :name%>
+	</p>
+	<p>
+		<%= f.label :note%>
+		<%= f.text_area :note%>
+	</p>
+	<p>
+		<%= f.label :completed%>
+		<%= f.check_box :completed%>
+	</p>
+	<p>
+		<%= f.submit%>
+	</p>
+<%end%>
+</div>
