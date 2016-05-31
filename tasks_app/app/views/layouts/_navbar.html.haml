@@ -1,0 +1,21 @@
+%nav.navbar.navbar-full.navbar-dark.bg-inverse#custom_nav
+  .container
+    %a.navbar-brand{:href => "#"} Navbar
+    %ul.nav.navbar-nav
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          Home
+          %span.sr-only (current)
+      %li.nav-item
+        %a.nav-link{:href => "/tasks"} Tasks
+      %li.nav-item
+        %a.nav-link{:href => "#"} Pricing
+      %li.nav-item
+        %a.nav-link{:href => "#"} About
+      %li.nav-item.pull-xs-right
+        %button.btn.btn-info
+          %i.fa.fa-plus{"aria-hidden" => "true"}
+          Task
+    -# %form.form-inline.pull-xs-right
+    -#   %input.form-control{:placeholder => "Search", :type => "text"}/
+    -#   %button.btn.btn-success-outline{:type => "submit"} Search

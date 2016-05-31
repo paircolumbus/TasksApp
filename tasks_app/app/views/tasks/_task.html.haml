@@ -1,0 +1,7 @@
+= content_tag_for(:tr, task) do
+  %td= task.description
+  %td= task.completed
+  %td= task.created_at.strftime("%m/%d/%Y %-l:%M%P")
+  %td= link_to "Edit", new_task_path, remote: true
+  %td= link_to "Done", complete_path(task), remote: true
+  %td= link_to "Delete", task, remote: true, method: :delete

@@ -1,0 +1,15 @@
+%h2 Task
+
+%p
+  %strong Description
+  = @task.description
+
+%p
+  %strong Completed
+  = @task.completed
+
+%p
+  %strong Created At
+  = @task.created_at
+
+= link_to "New", new_task_path
