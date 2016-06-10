@@ -1,0 +1,23 @@
+%h1 Editing task
+
+= form_for :task, url: tasks_path(@task), method: :patch do |f|
+  - if @task.errors.any?
+    #error_explanation
+      %h2
+        = "#{pluralize(@task.errors.count, 'error')} prohibited this task from being saved:"
+      
+      %ul
+        - @task.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label 'Task description'
+    = f.text_field :description
+ 
+  %p
+    = f.label 'Completed'
+    = f.check_box :completed
+ 
+  %p
+    = f.submit
+
+= link_to 'Back', tasks_path
