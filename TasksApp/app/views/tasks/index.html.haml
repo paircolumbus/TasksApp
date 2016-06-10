@@ -1,0 +1,14 @@
+%h1 Listing tasks
+
+= link_to 'My Tasks', tasks_path
+= link_to 'New Tasks', new_task_path
+ 
+%table
+  %tr
+    %th Description
+    %th Completed
+ 
+  - @tasks.each do |task|
+    %tr
+      %td= task.description
+      %td= task.completed
