@@ -1,0 +1,9 @@
+%nav.navbar.navbar-default
+  .container-fluid  
+    %ul.nav.navbar-nav
+      %li
+        = link_to tasks_path do
+          %button.btn.btn-default All Tasks
+      %li
+        = link_to new_task_path do
+          %button.btn.btn-success New Task 

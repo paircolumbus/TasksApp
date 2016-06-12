@@ -1,7 +1,21 @@
-%h1 This is the show template
+.row
+  .col-md-8.col-xs-12.center-block
 
-%p
-  = @task.description
-  = @task.completed
+    .panel.panel-success
+      .panel-heading
+        Task:
 
-= link_to 'All tasks', tasks_path
+      %table.table
+        %tr
+          %th Description
+          %th.icon Completed
+          %th.icon
+       
+        %tr
+          %td= @task.description
+          %td.icon
+            - if @task.completed
+              %i.glyphicon.glyphicon-ok
+          %td.icon
+            = link_to edit_task_path(@task) do
+              %i.glyphicon.glyphicon-pencil
