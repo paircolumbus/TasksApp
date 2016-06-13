@@ -8,16 +8,18 @@
       %table.table
         %tr
           %th Description
-          %th.icon Completed
+          %th.completed-column Completed
           %th.icon
           %th.icon
        
         - @tasks.each do |task|
           %tr
             %td= task.description
-            %td.icon
+            %td.completed-column
               - if task.completed
-                %i.glyphicon.glyphicon-ok
+                %i{class: 'glyphicon glyphicon-ok completed', data: {completed: 'true'}}
+              - else
+                %i{class: 'glyphicon glyphicon-ok not-completed', data: {completed: 'false'}}
             %td.icon
               = link_to edit_task_path(task) do
                 %i.glyphicon.glyphicon-pencil

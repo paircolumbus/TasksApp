@@ -29,7 +29,9 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to @task
+      respond_to do |format|
+        format.html { redirect_to @task }
+      end
     else
       render 'edit'
     end

@@ -1,14 +1,21 @@
-// Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .icon {
-  width: 80px;
+  width: 40px;
   text-align: center;
 }
 
-.glyphicon.glyphicon-ok {
-  color: green
+.completed-column {
+  width: 90px;
+  text-align: center;
+}
+
+.glyphicon.glyphicon-ok.not-completed {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.glyphicon.glyphicon-ok.completed {
+  color: green;
+  cursor: pointer;
 }
 
 .glyphicon.glyphicon-arrow-left {
