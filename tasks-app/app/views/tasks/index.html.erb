@@ -1,0 +1,21 @@
+<H1>Tasks<H1>
+  <%= @tasks.each do |task|%>
+  <% task %>
+  <% end %>
+
+
+<H2>Create a new task</H2>
+<%= form_for @task do |f| %>
+  <p>
+    <%= f.label :task_name %><br>
+    <%= f.text_field :task_name %>
+  </p>
+
+  <p>
+    <%= f.label :completed %><br>
+    <%= f.check_box :completed %>
+  </p>
+
+    <%= f.submit %>
+  </p>
+<% end %>
