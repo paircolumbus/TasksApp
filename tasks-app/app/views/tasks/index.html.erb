@@ -1,9 +1,18 @@
-<H1>Tasks<H1>
-  <%= @tasks.each do |task|%>
-  <% task %>
+<H1>Tasks</H1>
+  <table>
+    <% @tasks.each do |task|%>
+    <%= form_for task do |t| %>
+    <tr>
+      <td><%= t.check_box :completed %></td>
+      <td><%= task.task_name %></td>
+      <td><%= button_to "Update", task_path(task, "task" => {completed: true}), method: :patch%></td>
+      <td><%= button_to "Delete", task_path(task), method: :delete %></td>
+    </tr>
+    <% end %>
   <% end %>
+  </table>
 
-
+<hr>
 <H2>Create a new task</H2>
 <%= form_for @task do |f| %>
   <p>
