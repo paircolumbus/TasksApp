@@ -1,0 +1,11 @@
+<h1><%=@task.name%></h1>
+<%if @task.complete%>
+  <h3>YAY! You did it!</h3>
+<%else%>
+  <h3>Keep Working!</h3>
+  <%=button_to 'Mark Complete', task_path(@task, "task"=> {complete: true}), method: :patch%>
+<%end%>
+
+<%=link_to "Edit", edit_task_path%> | 
+<%= link_to "Delete", @task, method: :delete %> | 
+<%= link_to "Tasks", tasks_path %>
