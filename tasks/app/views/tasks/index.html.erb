@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Tasks</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+      <li><%= link_to task.description_with_box, edit_task_path(task) %> </li>
+      <%= button_to('Click to complete', task_path(task, task: {completed: true}), method: :put) if !(task.completed) %>
+      <%= button_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</ul>
+
+<br>
+
+<h1>Create a new task</h1>
+
+<%= render 'form' %>
