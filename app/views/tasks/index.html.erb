@@ -1,0 +1,22 @@
+<h1>My Tasks</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= link_to '[' + (task.complete ? 'X' : ' ') + '] ' + task.name, edit_task_path(task) %>
+      <div>
+        <% unless task.complete %>
+          <%= form_for task do |f| %>
+            <%= f.hidden_field :complete, value: true %>
+            <%= f.submit 'Mark complete' %>
+          <% end %>
+        <% end %>
+        <%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+<h2>Create a new task</h2>
+<%= render 'form' %>
