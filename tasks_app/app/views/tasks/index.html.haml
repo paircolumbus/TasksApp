@@ -1,0 +1,11 @@
+#tasks-index
+  %h1 Tasks
+  %table.table.table-striped.table-bordered.tasks-index-table
+    %th Completed
+    %th Description
+    %th Created At
+    %th
+    - @tasks.each do |task|
+      = render task
+
+  = link_to "New", new_task_path, remote: true, class: "btn btn-secondary new-task-button"

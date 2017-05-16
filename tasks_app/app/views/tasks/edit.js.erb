@@ -1,0 +1,2 @@
+//$('form').hide();
+$('tr#<%= dom_id(@task) %>').replaceWith('<tr id="<%= dom_id(@task) %>"><td colspan="5"><%= j render("form") %></td></tr>');
