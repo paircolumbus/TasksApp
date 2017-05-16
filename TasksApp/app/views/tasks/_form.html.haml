@@ -1,0 +1,20 @@
+.row
+  .col-md-5.col-sm-8.col-xs-12
+    = form_for @task do |f|
+      - if @task.errors.any?
+        .panel.panel-danger
+          .panel-heading#error_explanation
+            = "#{pluralize(@task.errors.count, 'error')} prohibited this task from being saved:"
+          %ul
+            - @task.errors.full_messages.each do |msg|
+              %li= msg
+
+      .form-group
+        = f.label 'Task description', for: "description"
+        = f.text_field :description, class: "form-control"
+     
+      .form-group
+        = f.label 'Completed'
+        = f.check_box :completed
+     
+      = f.submit "Submit", class: 'btn btn-success'

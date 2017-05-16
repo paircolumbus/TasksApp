@@ -1,0 +1,29 @@
+.row
+  .col-md-8.col-xs-12.center-block
+
+    .panel.panel-primary
+      .panel-heading
+        All Tasks
+
+      %table.table
+        %tr
+          %th Description
+          %th.completed-column Completed
+          %th.icon
+          %th.icon
+       
+        - @tasks.each do |task|
+          %tr
+            %td= task.description
+            %td.completed-column
+              - if task.completed
+                %i{class: 'glyphicon glyphicon-ok completed'}
+              - else
+                %i{class: 'glyphicon glyphicon-ok not-completed'}
+            %td.icon
+              = link_to edit_task_path(task) do
+                %i.glyphicon.glyphicon-pencil
+
+            %td.icon
+              = link_to task_path(task), method: :delete, data: { confirm: 'Are you sure?' } do
+                %i.glyphicon.glyphicon-trash
