@@ -1,0 +1,20 @@
+%h1 Todo List
+
+%table{ class: 'table' }
+  %tr
+    %th Title
+    %th Details
+    %th Complete?
+
+  - @tasks.each do |t|
+    %tr
+      %td= t.title
+      %td
+        %a{ href: "/tasks/#{t.id}" } Details
+      %td
+        - if t.complete
+          %span{ class: 'glyphicon glyphicon-ok-circle text-success' } 
+        - else
+          %span{ class: 'glyphicon glyphicon-remove-circle text-danger' }
+
+%a{ href: "/tasks/new", class: 'btn btn-primary' } Add a task!
