@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Tasks</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <p>
+        <% if task.completed == true %>
+          [x]
+        <% else %>
+          []
+        <% end %>
+        <%= link_to task.description, task %>
+        <% unless task.completed %>
+          <%= button_to 'Mark Complete', complete_path(task), method: :complete, data: { confirm: 'Are you sure you want to mark this as complete? ' } %>
+        <% end %>
+        <%= button_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
+<br>
+<hr>
+<br>
+
+<h1>Create a new task!</h1>
+
+<%= render 'form', task: @task %>
