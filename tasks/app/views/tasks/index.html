@@ -1,0 +1,92 @@
+<body>
+  <header class="deep-orange z-depth-2">
+    <div class="container">
+      <h1 class="title">Tasks App</h1>
+      <h4 class="subtitle">CoverMyMeds</h4>
+    </div>
+  </header>
+  <main class="white">
+    <br>
+    <div id="task-list" class="container">
+      <table class="bordered">
+        <thead class="table-header">
+          <tr>
+            <th>Title</th>
+            <th class="center">Completed</th>
+            <th class="center">Last Edit</th>
+            <th class="right">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr is="task-row" v-for="t in tasks" :initial-task="t">
+          </tr>
+          <tr id="new-task">
+            <td>
+              <div class="input-field">
+                <input id="new-title" type="text" v-model="currTask.title">
+                <label for="new-title">Title</label>
+              </div>
+              <span class="deep-orange-text text-lighten-4">{{ errors.title ? errors.title[0] : '' }}</span>
+            </td>
+            <td class="center">
+              <p class="input-field">
+                <input id="new-completed" type="checkbox" v-model="currTask.completed">
+                <label for="new-completed">Completed</label>
+              </p>
+              <span class="deep-orange-text text-lighten-4">{{ errors.completed ? errors.completed[0] : '' }}</span>
+            </td>
+            <td class="center">
+            </td>
+            <td class="right">
+              <div class="input-field">
+                <a @click="createTask"><i class="medium material-icons green-text icon-btn">add_box</i></a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <br>
+    </div>
+  </main>
+
+  <template id="task-row">
+    <tr>
+      <td>
+        <div v-if="editMode">
+          <div class="input-field">
+            <input id="edit-title" type="text" v-model="task.title">
+            <label for="edit-title" class="active">Title</label>
+          </div>
+          <span class="deep-orange-text text-lighten-4">{{ errors.title ? errors.title[0] : '' }}</span>
+        </div>
+        <div v-else>
+          {{ task.title }}
+        </div>
+      </td>
+      <td class="center">
+        <div v-if="editMode">
+          <p>
+            <input id="edit-completed" type="checkbox" v-model="task.completed">
+            <label for="edit-completed"></label>
+          </p>
+          <span class="deep-orange-text text-lighten-4">{{ errors.completed ? errors.completed[0] : '' }}</span>
+        </div>
+        <div v-else>
+          <i class="material-icons">{{ task.completed ? "done" : "" }}</i>
+        </div>
+      </td>
+      <td class="center">
+        <p>{{ task.prettyPrintDate() }}<span class="secondary-text"> - {{ task.prettyPrintTime() }}</span></p>
+      </td>
+      <td class="right">
+        <div class="input-field" v-if="editMode">
+          <a @click="updateTask"><i class="medium material-icons green-text icon-btn">save</i></a>
+        </div>
+        <a v-else @click="editTask"><i class="material-icons amber-text icon-btn">edit</i></a>
+        <a v-if="!editMode" @click="deleteTask"><i class="material-icons red-text icon-btn">delete</i></a>
+      </td>
+    </tr>
+  </template>
+</body>
