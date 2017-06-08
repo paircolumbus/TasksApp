@@ -10,6 +10,7 @@
     <tr>
       <td><%= task.description %></td>
       <td style="text-align: center"><%= link_to task.completed, task_path(task), method: :patch %></td>
+      <td><%= link_to 'Examine', task_path(task) %></td>
       <td><%= link_to 'Delete', task_path(task), method: :delete %></td>
     </tr>
   <% end %>
