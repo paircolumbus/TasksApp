@@ -1,0 +1,31 @@
+<h1>My Tasks</h1>
+ 
+<table>
+  <tr>
+    <th>Description:</th>
+    <th>Complete:</th>
+  </tr>
+ 
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.description %></td>
+      <td style="text-align: center"><%= link_to task.completed, task_path(task), method: :patch %></td>
+      <td><%= link_to 'Delete', task_path(task), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h1>Create New Task:</h1>
+
+<%= form_for :task, url: tasks_path do |f| %>
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </p>
+ 
+  <p>
+    <%= f.label :complete %>
+    <%= f.check_box :complete %>
+    <%= f.submit %>
+  </p>
+<% end %>
