@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h1>My Tasks</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="1"></th>
+      <th>Complete</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+    <tr>
+      <td><%= link_to task.title, task_path(task) %></td>
+      <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } %></td>
+      <td><%= task.complete %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br><hr>
+
+<h1>Create a New Task</h1>
+<%= link_to 'New Task', new_task_path %>
