@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Tasks Application
 
 __Skill Level:__ Intermediate  
@@ -26,3 +27,29 @@ Create an application with the framework of your choice (Rails, Django, etc) tha
 - [Mozilla on HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
 - [Mozilla HTML forms guide](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms)
 - [Why are there no PUT & DELETE methods on HTML forms?](https://programmers.stackexchange.com/questions/114156/why-are-there-are-no-put-and-delete-methods-on-html-forms)
+=======
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+>>>>>>> e72fa49... initial commit
