@@ -38,7 +38,7 @@ $(document).ready(() => {
             method:'PUT', 
             data: { id, completed_at:new Date() }
         })
-        .then(() => refreshTasks());
+        .then(refreshTasks);
     };
 
     window.removeTask = (id) => { 
@@ -47,7 +47,7 @@ $(document).ready(() => {
             method:'DELETE', 
             data: { id }
         })
-        .then(() => refreshTasks());
+        .then(refreshTasks);
 
     };
     window.createNew = () => {
