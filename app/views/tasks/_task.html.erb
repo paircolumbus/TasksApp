@@ -1,0 +1,9 @@
+<li class="<%= 'completed' if task.completed %>">
+  <%= task.description %>
+  <% if task.completed %>
+    <%= link_to "Mark incomplete", list_task_path(task.list_id, task.id), method: :put %>
+  <% else %>
+    <%= link_to "Complete", list_task_path(task.list_id, task.id), method: :put %>
+  <% end %>
+  <%= link_to "Remove", list_task_path(task.list_id, task.id), method: :delete %>
+</li>
