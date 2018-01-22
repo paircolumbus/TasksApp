@@ -1,0 +1,10 @@
+<h1>List Index</h1>
+<ul>
+  <% @lists.each do |list| %>
+    <li>
+      <%= link_to list.name, list_path(list.id) %> - 
+      <%= link_to "Delete", list_path(list.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'New List', new_list_path %>
