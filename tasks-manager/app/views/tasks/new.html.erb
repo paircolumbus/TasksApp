@@ -1,0 +1,27 @@
+<%= form_with scope: :task, url: tasks_path, local: true do |form| %>
+
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@task.errors.count, "error") %> couldn't save this task
+      </h2>
+      <ul>
+        <% @task.errors.full_messages.each do |error_msg| %>
+          <li style="color: red"><%= error_msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <strong><%= form.label 'Task Description:' %></strong> <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <strong><%= form.label 'Completed?:' %></strong> <%= form.check_box :completed %>
+  </p>
+
+  <p> <%= form.submit class: "btn btn-secondary"%> </p>
+<% end %>
+
+<%= link_to 'Back', tasks_path, class: "btn btn-light" %>

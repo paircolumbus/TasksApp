@@ -1,0 +1,33 @@
+<%= link_to 'New Task', new_task_path, class: "btn btn-primary" %> <br><br>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Task Name</th>
+    <th scope="col">Completed?</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @tasks.each_with_index do |task, index| %>
+  <tr>
+    <th scope="row"><%= index+1 %>.</th>
+    <td><%= task.title %></td>
+    <td>
+      <% if task.completed %>
+        [X]
+        <%= link_to 'Mark as InComplete', task_path(task), class: "btn btn-info", method: :put %>
+      <% else %>
+        [ ]
+        <%= link_to 'Mark as Completed', task_path(task), class: "btn btn-success", method: :put %>
+      <% end%>
+    </td>
+    <td><%= link_to 'Delete', task_path(task), class: "btn btn-danger",
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
